@@ -63,6 +63,32 @@ nav ul li a:hover::before{
 
 }
 
+/* Estilo para centrar el iframe del mapa */
+iframe {
+    display: block;          /* Hace que el iframe sea un bloque */
+    margin-left: auto;       /* Establece el margen izquierdo a automático */
+    margin-right: auto;      /* Establece el margen derecho a automático */
+    width: 80%;              /* Establece un ancho máximo del 80% del contenedor */
+    max-width: 800px;        /* Ancho máximo para el iframe */
+}
+
+
+/* Estilo para las imágenes de las marcas */
+#telefonosEnStock #listaTelefonos div img {
+    width: 150px;  /* Ancho específico */
+    height: auto;  /* Altura automática para mantener la proporción */
+    margin: 10px;  /* Margen entre las imágenes */
+}
+
+/* Estilo para las imágenes de las marcas */
+#telefonosEnStock #listaTelefonos div {
+    display: inline-block;  /* Establece el div como un bloque en línea */
+    margin: 10px;           /* Añade margen para separación entre las imágenes */
+    vertical-align: top;    /* Alinea las imágenes en la parte superior del div */
+}
+
+
+
 footer{
     background: #343434;
     padding-top: 50px;

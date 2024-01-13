@@ -3,13 +3,19 @@
       {
         "marca": "Samsung",
         "img": "./images/logosamsung.png",
+        "descripcion": "Dispositivos con tecnología avanzada, pantalla de alta resolución y versatilidad en características."
+      },
+      {
+        "marca": "Apple",
+        "img": "./images/logoapple1.png",
         "descripcion": "Teléfonos de alta calidad con sistema operativo iOS y una amplia gama de aplicaciones."
       },
       {
-        "marca": "Samsung",
-        "img": "./images/samsung-logo.png",
+        "marca": "Google",
+        "img": "./images/logogoogle.png",
         "descripcion": "Dispositivos con tecnología avanzada, pantalla de alta resolución y versatilidad en características."
       }
+      
       
     ]
   }
