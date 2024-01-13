@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <title>Home</title>
 </head>
 <body style="background-color: #63c6d5;">
     <header>
         <div class="menu">
-            <img src="./images/logo.png" alt="">
+            <img src="./images/logo.png" class="img" alt="">
             <nav>
                 <ul>
                     <li><a href="./pages/samsung.html">Samsung</a></li>
                     <li><a href="./pages/apple.html">Apple</a></li>
                     <li><a href="./pages/google.html">Google</a></li>
+                    <li><a href="./pages/registro.html">Iniciar Sesion/Registrarte</a></li>
                 </ul>
             </nav>
         </div>
@@ -38,6 +40,9 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit cupiditate atque maiores at, rem, minima fuga illo deserunt delectus quae beatae commodi sit harum necessitatibus dolore et. Ex, est sit.
 
                 </p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non corporis a atque. Eveniet molestiae facere quos, magnam accusantium neque similique, eos beatae obcaecati suscipit error doloribus mollitia labore autem. Voluptatibus.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non corporis a atque. Eveniet molestiae facere quos, magnam accusantium neque similique, eos beatae obcaecati suscipit error doloribus mollitia labore autem. Voluptatibus.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non corporis a atque. Eveniet molestiae facere quos, magnam accusantium neque similique, eos beatae obcaecati suscipit error doloribus mollitia labore autem. Voluptatibus.</p>
             
             </article>
         </section>
@@ -52,8 +57,54 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit vitae optio beatae, saepe atque omnis sapiente deleniti! Corrupti ipsum asperiores cumque, accusamus nihil praesentium ullam temporibus assumenda reprehenderit, nobis illum?
 
                 </p>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, hic consequuntur sint officia quibusdam amet at ullam reiciendis cum inventore nostrum? Minus, eaque sapiente. Ipsum, quae dolores. Porro, dolorum quis.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, hic consequuntur sint officia quibusdam amet at ullam reiciendis cum inventore nostrum? Minus, eaque sapiente. Ipsum, quae dolores. Porro, dolorum quis.</p>
             </article>
         </section>
+        <!-- ... Tu HTML anterior ... -->
+
+<section id="telefonosEnStock">
+    <h3>Marcas con las que trabajamos</h3>
+    <div id="listaTelefonos"></div>
+</section>
+
+<!-- ... Tu HTML anterior ... -->
+
+<script>
+    // Utilizar la función fetch para obtener los datos del archivo JSON
+    fetch('./js/telefonos.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Acceder al array 'telefonos_en_stock' del JSON
+            const telefonos = data.telefonos_en_stock;
+
+            // Obtener el elemento div donde se mostrarán los teléfonos
+            const listaTelefonos = document.getElementById('listaTelefonos');
+
+            // Iterar a través de cada teléfono y mostrarlo en el div
+            telefonos.forEach(telefono => {
+                listaTelefonos.innerHTML += `
+                    <div>
+                        <img src="${telefono.img}" alt="${telefono.marca} Logo" />
+                        <h4>${telefono.marca}</h4>
+                        <p>${telefono.descripcion}</p>
+                    </div>
+                `;
+            });
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+</script>
+
+<!-- ... Tu HTML anterior ... -->
+
         
         <section>
             <h3>
@@ -81,19 +132,51 @@
 
                 </p>
 
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere velit magnam at libero quis quae, similique sint eos amet assumenda ducimus, ipsam beatae blanditiis temporibus dicta? Fugiat perferendis mollitia quo!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere velit magnam at libero quis quae, similique sint eos amet assumenda ducimus, ipsam beatae blanditiis temporibus dicta? Fugiat perferendis mollitia quo!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere velit magnam at libero quis quae, similique sint eos amet assumenda ducimus, ipsam beatae blanditiis temporibus dicta? Fugiat perferendis mollitia quo!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere velit magnam at libero quis quae, similique sint eos amet assumenda ducimus, ipsam beatae blanditiis temporibus dicta? Fugiat perferendis mollitia quo!</p>
+
             </article>
         </section>
 
     </main>
 
-    <footer style="background-color: rgb(173, 166, 166);">
-        <address>
-            Contacto:3766764 // dvjnfuieu@gmail.com <br>
     
-            Direccion Casa Central: Isabel La Catolica 42
 
-        </address>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Contactanos</h3>
+                <p>Email:nicojerez02@gmail.com</p>
+                <p>Celular:+54 9 3816449085</p>
+                <p>Direccion:Isabel La Catolica 42</p>
+            </div>
+            <div class="footer-content">
+                <h3>Enlaces</h3>
+                <ul class="list">
+                    <li><a href="./pages/samsung.html">Samsung</a></li>
+                    <li><a href="./pages/apple.html">Apple</a></li>
+                    <li><a href="./pages/google.html">Google</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h3>Redes Sociales</h3>
+                <ul class="social-icons">
+                    <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2023 your company</p>
+        </div>
     </footer>
+
+    <script src="./js/telefonos.json"></script>
 
 
 </body>

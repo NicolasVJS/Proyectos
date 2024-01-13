@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Formulario y Lista de Stock de Celulares</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    form {
+        max-width: 500px;
+        margin: auto;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    table, th, td {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        text-align: left;
+    }
+    input[type="text"], input[type="number"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    input[type="submit"], input[type="button"] {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+<script>
+function guardarEnLocalStorage() {
+    const modelo = document.getElementById('modelo').value.trim();
+    const precio = document.getElementById('precio').value.trim();
+    const stock = document.getElementById('stock').value.trim();
+    const descripcion = document.getElementById('descripcion').value.trim();
+
+    // Verificar si alguno de los campos está vacío después de quitar espacios en blanco
+    if (modelo === '' || precio === '' || stock === '' || descripcion === '') {
+        alert('Por favor, complete todos los campos antes de agregar el stock.');
+        return; // Salir de la función si hay algún campo vacío
+    }
+
+    const celular = {
+        modelo: modelo,
+        precio: precio,
+        stock: stock,
+        descripcion: descripcion
+    };
+
+    // Recuperar la lista existente de celulares o crear una nueva lista
+    let listaCelulares = JSON.parse(localStorage.getItem('listaCelulares')) || [];
+    
+    // Agregar el nuevo celular a la lista
+    listaCelulares.push(celular);
+
+    // Guardar la lista actualizada en localStorage
+    localStorage.setItem('listaCelulares', JSON.stringify(listaCelulares));
+
+    // Limpiar el formulario después de guardar
+    document.getElementById('formularioStock').reset();
+
+    // Actualizar la tabla mostrando los datos
+    mostrarDatosEnTabla(listaCelulares);
+}
+
+
+function mostrarDatosEnTabla(listaCelulares) {
+    const tabla = document.getElementById('tablaCelulares');
+    tabla.innerHTML = `
+        <tr>
+            <th>Modelo</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Descripción</th>
+        </tr>
+    `;
+    
+    listaCelulares.forEach(celular => {
+        const fila = `
+            <tr>
+                <td>${celular.modelo}</td>
+                <td>${celular.precio}</td>
+                <td>${celular.stock}</td>
+                <td>${celular.descripcion}</td>
+            </tr>
+        `;
+        tabla.innerHTML += fila;
+    });
+}
+
+// Mostrar datos al cargar la página
+window.onload = function() {
+    const listaGuardada = JSON.parse(localStorage.getItem('listaCelulares'));
+    if (listaGuardada) {
+        mostrarDatosEnTabla(listaGuardada);
+    }
+}
+</script>
+</head>
+<body>
+
+    <h1 style="text-align: center;">Bienvenido a tu area de trabajo, Nicolas</h1>
+
+<h2 style="text-align: center;">Formulario de Stock de Celulares</h2>
+
+<form id="formularioStock">
+    <label for="modelo">Modelo:</label>
+    <input type="text" id="modelo" name="modelo" required><br>
+    
+    <label for="precio">Precio:</label>
+    <input type="number" id="precio" name="precio" min="0" step="0.01" required><br>
+    
+    <label for="stock">Stock:</label>
+    <input type="number" id="stock" name="stock" min="0" required><br>
+    
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" name="descripcion" rows="4" required></textarea><br>
+    
+    <input type="button" value="Agregar Stock" onclick="guardarEnLocalStorage()">
+</form>
+
+<h2 style="text-align: center;">Lista de Stock de Celulares</h2>
+<table id="tablaCelulares">
+    <tr>
+        <th>Modelo</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Descripción</th>
+    </tr>
+</table>
+
+</body>
+</html>
+
+
+
+
+
+
+

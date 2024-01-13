@@ -1,8 +1,56 @@
-body{
-    margin: 0;
-    padding: 0;
-    background: url(../images/formulario2.png);   
-    background-size: cover;
-    background-position: center;
-    font-family: sans-serif;
+body {
+    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif; /* Fuente de texto para el formulario */
+}
+
+h1 {
+    text-align: center;
+    color: #333; /* Color de texto para el título */
+    margin-top: 30px;
+}
+
+.form {
+    background-color: #fff; /* Color de fondo del formulario */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados para el formulario */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera para efecto de elevación */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #555; /* Color de texto para las etiquetas */
+}
+
+input[type="text"],
+input[type="email"],
+select {
+    padding: 10px;
+    border: 1px solid #ddd; /* Borde del campo de entrada */
+    border-radius: 5px; /* Bordes redondeados para el campo de entrada */
+    transition: border-color 0.3s ease; /* Transición suave para el cambio de color del borde */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+    border-color: #2196f3; /* Cambio de color del borde al enfocar el campo */
+    outline: none;
+}
+
+.btn-submit {
+    background-color: #2196f3;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Cambio de cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+}
+
+.btn-submit:hover {
+    background-color: #0c7bb3; /* Color de fondo más oscuro al pasar sobre el botón */
 }

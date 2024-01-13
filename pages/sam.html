@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/samsung.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>Samsung</title>
+</head>
+
+<body style="background-color: #63c6d5;">
+
+    <!-- Contenido HTML existente -->
+
+
+
+    <main>
+        <h1 style="text-align: center;">Te mostramos nuestros productos en stock:</h1>
+        <section id="productos-section">
+            <!-- Aquí se insertarán los productos -->
+        </section>
+    </main>
+    
+    <footer>
+        <!-- Contenido del footer -->
+    </footer>
+
+    <!-- Script para realizar fetch del archivo JSON -->
+    <script>
+        // URL del archivo JSON
+        // URL del archivo JSON
+        const url = '../js/u.json';
+
+        // Realizar solicitud fetch
+        fetch(url)
+            .then(response => {
+                // Verificar si la respuesta es correcta
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                // Convertir respuesta a formato JSON
+                return response.json();
+            })
+            .then(data => {
+                // Aquí tienes acceso a los datos del archivo JSON
+                console.log(data);
+
+                // Por ejemplo, para acceder a la lista de teléfonos
+                const telefonos = data.telefonos;
+
+                // Seleccionar el elemento donde se insertarán los productos
+                const productosSection = document.getElementById('productos-section');
+
+                // Crear y añadir cada teléfono al DOM
+                telefonos.forEach(telefono => {
+                    const divTelefono = document.createElement('div');
+                    divTelefono.classList.add('div');
+
+                    const h4 = document.createElement('h4');
+                    h4.textContent = telefono.modelo;
+
+                    const img = document.createElement('img');
+                    img.src = `../images/${telefono.modelo.replace(/\s+/g, '').toLowerCase()}.png`; // Asumiendo que las imágenes siguen un formato específico
+
+                    const figcaption = document.createElement('figcaption');
+                    figcaption.textContent = telefono.modelo;
+
+                    const p = document.createElement('p');
+                    p.textContent = 'Descripcion del producto';
+
+                    const comprarButton = document.createElement('button');
+                    comprarButton.type = 'button';
+                    comprarButton.innerHTML = '<span>Comprar</span>';
+
+                    divTelefono.appendChild(h4);
+                    divTelefono.appendChild(img);
+                    divTelefono.appendChild(figcaption);
+                    divTelefono.appendChild(p);
+                    divTelefono.appendChild(comprarButton);
+
+                    productosSection.appendChild(divTelefono);
+                });
+            })
+            .catch(error => {
+                // Capturar y mostrar errores en caso de que ocurra alguno
+                console.error('Fetch error:', error);
+            });
+
+    </script>
+
+    <script src="../js/u.json"></script>
+
+</body>
+
+</html>
